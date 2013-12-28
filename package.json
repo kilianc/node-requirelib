@@ -1,0 +1,25 @@
+{
+  "name": "requirelib",
+  "version": "0.0.1",
+  "description": "Requires libraries from ./lib or ./lib-cov",
+  "main": "index.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:kilianc/node-requirelib.git"
+  },
+  "keywords": [
+    "require",
+    "lib",
+    "lib-cov",
+    "relative"
+  ],
+  "author": "Kilian Ciuffolo <me@nailik.org>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kilianc/node-requirelib/issues"
+  },
+  "homepage": "https://github.com/kilianc/node-requirelib"
+}
