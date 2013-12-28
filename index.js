@@ -1,30 +1,24 @@
-/**
- * Loads libraries from ./lib or ./lib-cov
- *
- * @param {String} env Env variable to check for code coverage
- * @api public
+/*!
+ * index.js
+ * Created by Kilian Ciuffolo on Dec 28, 2013
+ * Copyright (c) 2013 Kilian Ciuffolo, me@nailik.org. All Rights Reserved.
  */
 
-module.exports = function (env) {
-  if (undefined !== GLOBAL.LIB_PATH) return requirelib(env)
+/**
+ * Path to lib folder.
+ */
 
-  GLOBAL.CWD = process.cwd()
-  GLOBAL.LIB_PATH = CWD + (process.env[env] ? '/lib-cov' : '/lib')
-  GLOBAL.CONFIG_PATH = CWD
-                       + '/config/'
-                       + (process.env.NODE_ENV || 'development')
-                       + '.json'
-
-  return requirelib
-}
+var LIB_PATH = process.cwd() + (process.argv.some(function (arg) {
+	return '--coverage' === arg
+}) ? '/lib-cov' : '/lib')
 
 /**
  * Loads libraries from ./lib or ./lib-cov
  *
- * @param {String} env Env variable to check for code coverage
+ * @param {String} what Path to the module to load
  * @api public
  */
 
-function requirelib(what) {
+module.exports = function (what) {
   return require(LIB_PATH + '/' + what)
 }

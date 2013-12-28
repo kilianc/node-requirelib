@@ -8,23 +8,26 @@ Uses internally node `require` function but it's relative to your `lib` folder o
 ## Usage
 
 ```js
-var requirelib = require('./lib/requirelib')('MY_NAME_COV') //checks for process.env.MY_NAME_COV
-  , override = requirelib('my_module')
-  , override = requirelib('my_other_module/module')
-  , config = require(CONFIG_PATH)
+var requirelib = require('requirelib')
+  , override = requirelib('a')          // ./lib/a
+  , override = requirelib('b/c')        // ./lib/b/c
 ```
+
+Uses `./lib`
+
+    $ node server.js
 
 Uses `./lib-cov`
 
-    $ MY_NAME_COV=1 node server.js
+    $ node server.js --coverage
 
-Coverage with mocha
+Coverage with mocha, uses `./lib-cov`
 
-    $ @NODE_ENV=test MY_NAME_COV=1 mocha test/*.test.js --reporter spec
+    $ @NODE_ENV=test mocha test/*.test.js --coverage --reporter spec
 
 # How to contribute
 
-koa-jsonp follows (more or less) the [Felix's Node.js Style Guide](http://nodeguide.com/style.html), your contribution must be consistent with this style.
+This library follows (more or less) the [Felix's Node.js Style Guide](http://nodeguide.com/style.html), your contribution must be consistent with this style.
 
 The test suite is written on top of [visionmedia/mocha](http://visionmedia.github.com/mocha/) and it took hours of hard work. Please use the tests to check if your contribution is breaking some part of the library and add new tests for each new feature.
 
